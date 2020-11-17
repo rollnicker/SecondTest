@@ -61,7 +61,7 @@ public class SberTest {
         driver.findElement(By.xpath("//DIV[@class='online-card-program selected']")).click();
         // Нажал на минимальный пакет. Данный шаг отключен, так как он выбран изначально + из-за него тест падает
 
-        WebElement insurance = driver.findElement(By.xpath("//BUTTON[@class='btn btn-primary btn-large'][text()='Оформить']"));
+        WebElement insurances = driver.findElement(By.xpath("//BUTTON[@class='btn btn-primary btn-large'][text()='Оформить']"));
         driver.findElement(By.xpath("//BUTTON[text()='Оформить']")).click();
 
         WebElement lastname = driver.findElement(By.xpath("//INPUT[@id='surname_vzr_ins_0']"));

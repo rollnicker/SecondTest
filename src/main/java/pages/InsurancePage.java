@@ -18,20 +18,26 @@ public class InsurancePage extends BasePage {
     @FindBy(xpath = "//H3[text()='Страхование для путешественников']/../../..//*[text()='Оформить онлайн']")
     public WebElement sendAppBtn;
 
-    public InsurancePage(WebDriver driver){
+    public InsurancePage(WebDriver driver) {
         PageFactory.initElements(driver, this);
         this.driver = driver;
     }
 
-    public void clickOformt (String menuItem){
-        sendAppBtn.findElement(By.xpath(".//[text()='"+menuItem+"']/../../..//*[text()='Оформить онлайн']")).click();
+    public void clickOformit(String menuItem) {
+        sendAppBtn.findElement(By.xpath(".//[text()='" + menuItem + "']/../../..//*[text()='Оформить онлайн']")).click();
     }
 
-
-    public void waitSendAppClickable(){
+    public void waitSendAppClickable() {
         Wait<WebDriver> wait = new WebDriverWait(driver, 5, 1000);
         wait.until(ExpectedConditions.visibilityOf(
                 driver.findElement(By.xpath("//H3[@class='uc-full__header'][text()='Страхование для путешественников']/../../..//*[text()='Оформить онлайн']"))));
     }
+
+    public void closeCookie() {
+        Wait<WebDriver> wait = new WebDriverWait(driver, 5, 1000);
+        WebElement cookie = driver.findElement(By.xpath("//button[@class='kitt-cookie-warning__close']"));
+        wait.until(ExpectedConditions.visibilityOf(cookie));
+        cookie.click();
+    }
 }
-//H3[@class='uc-full__header'][contains(text(),'Страхование для путешественников')]/../../..//*[text()='Оформить онлайн']
+

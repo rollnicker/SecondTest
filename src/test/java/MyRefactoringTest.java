@@ -28,11 +28,7 @@ public class MyRefactoringTest extends BaseTest {
         // Переходим в каталог страховки
 
         InsurancePage insurancePage = new InsurancePage(driver);
-
-        Wait<WebDriver> wait = new WebDriverWait(driver, 5, 1000);
-        WebElement cookie = driver.findElement(By.xpath("//button[@class='kitt-cookie-warning__close']"));
-        wait.until(ExpectedConditions.visibilityOf(cookie));
-        cookie.click();
+        insurancePage.closeCookie();
 
         insurancePage.waitSendAppClickable();
         String actualTitle = insurancePage.title.getText();
