@@ -150,7 +150,6 @@ public class SendAppPage extends BasePage {
         throw new AssertionError("Поле не объявлено на странице");
     }
 
-
     public void checkFieldErrorMessage(String errorMessage){
         String xpath = "//div[@class='alert-form alert-form-error']";
         String actualValue = driver.findElement(By.xpath(xpath)).getText();

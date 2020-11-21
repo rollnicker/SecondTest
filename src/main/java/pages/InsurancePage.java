@@ -10,6 +10,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import static org.junit.Assert.assertTrue;
+
 public class InsurancePage extends BasePage {
 
     @FindBy(xpath = "//H3[@class='uc-full__header'][text()='Страхование для путешественников']")
@@ -39,5 +41,6 @@ public class InsurancePage extends BasePage {
         wait.until(ExpectedConditions.visibilityOf(cookie));
         cookie.click();
     }
+
 }
 

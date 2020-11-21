@@ -1,3 +1,5 @@
+package steps;
+
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -8,17 +10,21 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import util.TestProperties;
 
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.assertEquals;
 
-public class BaseTest {
+public class BaseSteps {
     protected static WebDriver driver;
     protected static String baseUrl;
     public static Properties properties = TestProperties.getInstance().getProperties();
 
+    public static WebDriver getDriver() {
+        return driver;
+    }
 
     @BeforeClass
     public static void setUp() throws Exception {
@@ -34,7 +40,7 @@ public class BaseTest {
         }
 
         baseUrl = properties.getProperty("app.url");
-        System.out.println(baseUrl);
+        driver.get(baseUrl + "/");
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().window().maximize();
     }
@@ -44,19 +50,19 @@ public class BaseTest {
         driver.quit();
     }
 
-    protected boolean isElementPresent(By by) {
-        try {
-            driver.findElement(by);
-            return true;
-        } catch (NoSuchElementException e) {
-            return false;
-        }
-    }
-
-    protected void fillField(By locator, String value) {
-        driver.findElement(locator).clear();
-        driver.findElement(locator).sendKeys(value);
-    }
+//    protected boolean isElementPresent(By by) {
+//        try {
+//            driver.findElement(by);
+//            return true;
+//        } catch (NoSuchElementException e) {
+//            return false;
+//        }
+//    }
+//
+//    protected void fillField(By locator, String value) {
+//        driver.findElement(locator).clear();
+//        driver.findElement(locator).sendKeys(value);
+//    }
 
     protected void checkFillField(String value, By locator) {
         assertEquals(value, driver.findElement(locator).getAttribute("value"));
