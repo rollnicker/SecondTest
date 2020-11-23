@@ -22,23 +22,23 @@ public class MyTestForAllureReport extends BaseSteps {
 
     public  void testImsurance(){
 
-//        testData.put("Застрахованные Фамилия","Иванов");
-//        testData.put("Застрахованные имя","Иван");
-//        testData.put("Застрахованные дата рождения","10011999");
-//
-//        testData.put("Фамилия","Петров");
-//        testData.put("Имя","Пётр");
-//        testData.put("Отчество","Петрович");
-//        testData.put("Дата рождения","10011989");
-//
+        testData.put("Застрахованные Фамилия","Иванов");
+        testData.put("Застрахованные имя","Иван");
+        testData.put("Застрахованные дата рождения","10.01.1999");
+
+        testData.put("Фамилия","Петров");
+        testData.put("Имя","Пётр");
+        testData.put("Отчество","Петрович");
+        testData.put("Дата рождения","10.01.1989");
+
         testData.put("Серия паспорта","1234");
         testData.put("Номер паспорта","123456");
-        testData.put("Дата выдачи","10012015");
-        testData.put("Кем выдан","Отдоелом");
-//
-//        testData.put("Телефон","");
-//        testData.put("Эл. почта","");
-//        testData.put("Повтор почты","");
+        testData.put("Дата выдачи","10.01.2015");
+        testData.put("Кем выдан","Отделом");
+
+        testData.put("Телефон","");
+        testData.put("Эл. почта","");
+        testData.put("Повтор почты","");
 
         mainSteps.stepSelectMainMenu("Страхование");
         mainSteps.stepInsuranceItem("Перейти в каталог");
@@ -47,11 +47,13 @@ public class MyTestForAllureReport extends BaseSteps {
         insuranceSteps.stepCheckTitle2("Страхование для путешественников");
         insuranceSteps.stepSendAppButton();
 
-
+        sendAppSteps.stepWaitRegisterButton();
         sendAppSteps.stepArrangeClick();
-        sendAppSteps.clickField("Серия паспорта");
         sendAppSteps.stepFillFields(testData);
-//        sendAppSteps.stepClickConfirm();
-//        sendAppSteps.stepCheckErrorMessage("При заполнении данных произошла ошибка");
+        sendAppSteps.stepFillField("Кем выдан", "Отделом");
+        sendAppSteps.clickField("Пол");
+        sendAppSteps.checkFillFields(testData);
+        sendAppSteps.stepClickConfirm();
+        sendAppSteps.stepCheckErrorMessage("При заполнении данных произошла ошибка");
     }
 }

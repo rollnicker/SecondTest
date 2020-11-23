@@ -50,19 +50,19 @@ public class BaseSteps {
         driver.quit();
     }
 
-//    protected boolean isElementPresent(By by) {
-//        try {
-//            driver.findElement(by);
-//            return true;
-//        } catch (NoSuchElementException e) {
-//            return false;
-//        }
-//    }
-//
-//    protected void fillField(By locator, String value) {
-//        driver.findElement(locator).clear();
-//        driver.findElement(locator).sendKeys(value);
-//    }
+    protected boolean isElementPresent(By by) {
+        try {
+            driver.findElement(by);
+            return true;
+        } catch (NoSuchElementException e) {
+            return false;
+        }
+    }
+
+    protected void fillField(By locator, String value) {
+        driver.findElement(locator).clear();
+        driver.findElement(locator).sendKeys(value);
+    }
 
     protected void checkFillField(String value, By locator) {
         assertEquals(value, driver.findElement(locator).getAttribute("value"));

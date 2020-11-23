@@ -21,14 +21,14 @@ public class InsuranceSteps extends BaseSteps {
 //    }
     // Старая реализация проверки заголовка
 
-    @Step("Проверить что заголовок \"Страхование путешественников\" называется {0}")
+    @Step("Проверить что заголовок Страхование путешественников называется {0}")
     public void stepCheckTitle2(String expectedTitle) {
         String actualTitle = new InsurancePage(driver).title.getText();
         assertTrue(String.format("Заголовок равен [%s]. Ожидалось - [%s]",
                 actualTitle, expectedTitle), actualTitle.contains(expectedTitle));
     }
 
-    @Step("Нажали кнопку Оформить Онлайн у поля {0}")
+    @Step("Нажать кнопку Оформить Онлайн")
     public void stepSendAppButton(){
         InsurancePage insurancePage = new InsurancePage(driver);
         insurancePage.waitSendAppClickable();

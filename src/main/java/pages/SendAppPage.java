@@ -17,7 +17,6 @@ public class SendAppPage extends BasePage {
     @FindBy(xpath = "//BUTTON[text()='Оформить']")
     public WebElement arrange;
     // Кнопка оформить
-
     @FindBy(id = "surname_vzr_ins_0")
     WebElement insuredLastName;
     @FindBy(id = "name_vzr_ins_0")
@@ -62,8 +61,6 @@ public class SendAppPage extends BasePage {
 
     public SendAppPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
-        (new WebDriverWait(driver, 10))
-                .until(ExpectedConditions.visibilityOf(arrange));
         this.driver = driver;
     }
 
@@ -173,6 +170,9 @@ public class SendAppPage extends BasePage {
                 break;
             case "Продолжить":
                 sendButton.click();
+                break;
+            case "Пол":
+                gender.click();
                 break;
         }
     }

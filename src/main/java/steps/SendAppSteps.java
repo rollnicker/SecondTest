@@ -9,7 +9,7 @@ import static org.junit.Assert.assertTrue;
 
 public class SendAppSteps extends BaseSteps {
 
-    @Step("Нажать на поле")
+    @Step("Нажать на поле {0}")
     public void clickField(String field) {
         new SendAppPage(driver).clickField(field);
     }
@@ -28,21 +28,21 @@ public class SendAppSteps extends BaseSteps {
         new SendAppPage(driver).fillField(field, value);
     }
 
-    @Step("заполяются поля:")
+    @Step("Заполяется поле {0} значением {1}")
     public void stepFillFields(HashMap<String,String>fields){
         fields.forEach((key,value)->
                 stepFillField(key,value));}
 
-//    @Step("поле {0} заполнено значением {1}")
-//    public void checkFillField(String field, String value){
-//        String actual = new SendAppPage(driver).getFillField(field);
-//        assertTrue(String.format("Значение поля [%s] равно [%s]. Ожидалось - [%s]", field, actual, value),
-//                actual.equals(value));
-//    }
-//    @Step("поля заполнены верно")
-//    public void checkFillFields(HashMap<String,String>fields){
-//        fields.forEach((key,value)->
-//                checkFillField(key,value));}
+    @Step("поле {0} заполнено значением {1}")
+    public void checkFillField(String field, String value){
+        String actual = new SendAppPage(driver).getFillField(field);
+        assertTrue(String.format("Значение поля [%s] равно [%s]. Ожидалось - [%s]", field, actual, value),
+                actual.equals(value));
+    }
+    @Step("поля заполнены верно")
+    public void checkFillFields(HashMap<String,String>fields){
+        fields.forEach((key,value)->
+                checkFillField(key,value));}
 
     @Step("Нажать кнопку продолжить")
     public void stepClickConfirm() {
