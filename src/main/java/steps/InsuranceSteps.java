@@ -5,10 +5,10 @@ import ru.yandex.qatools.allure.annotations.Step;
 
 import static org.junit.Assert.assertTrue;
 
-public class InsuranceSteps extends BaseSteps {
+public class InsuranceSteps {
 
     @Step("Закрыли высплывающее сообщение")
-    public void stepCloseCookie(){ new InsurancePage(driver).closeCookie();
+    public void stepCloseCookie(){ new InsurancePage().closeCookie();
     }
 
 //    @Step("Проверить что заголовок {0} называется {1}")
@@ -23,14 +23,14 @@ public class InsuranceSteps extends BaseSteps {
 
     @Step("Проверить что заголовок Страхование путешественников называется {0}")
     public void stepCheckTitle2(String expectedTitle) {
-        String actualTitle = new InsurancePage(driver).title.getText();
+        String actualTitle = new InsurancePage().title.getText();
         assertTrue(String.format("Заголовок равен [%s]. Ожидалось - [%s]",
                 actualTitle, expectedTitle), actualTitle.contains(expectedTitle));
     }
 
     @Step("Нажать кнопку Оформить Онлайн")
     public void stepSendAppButton(){
-        InsurancePage insurancePage = new InsurancePage(driver);
+        InsurancePage insurancePage = new InsurancePage();
         insurancePage.waitSendAppClickable();
         insurancePage.sendAppBtn.click();
     }

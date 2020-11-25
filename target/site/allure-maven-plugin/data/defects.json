@@ -1,0 +1,29 @@
+{
+  "defectsList" : [ {
+    "title" : "Product defects",
+    "status" : "FAILED",
+    "defects" : [ {
+      "uid" : "f2da8398d755a511",
+      "failure" : {
+        "message" : "AssertionError: Значение поля [Дата выдачи] равно [10.01.2010]. Ожидалось - [10.012010]",
+        "stackTrace" : "java.lang.AssertionError: Значение поля [Дата выдачи] равно [10.01.2010]. Ожидалось - [10.012010]\n\tat org.junit.Assert.fail(Assert.java:89)\n\tat org.junit.Assert.assertTrue(Assert.java:42)\n\tat steps.SendAppSteps.checkFillField(SendAppSteps.java:39)\n\tat steps.ScenarioSteps.lambda$stepCheckFields$1(ScenarioSteps.java:62)\n\tat java.util.LinkedHashMap.forEach(LinkedHashMap.java:684)\n\tat java.util.Collections$UnmodifiableMap.forEach(Collections.java:1505)\n\tat steps.ScenarioSteps.stepCheckFields(ScenarioSteps.java:62)\n\tat ✽.Тогда значения равны:(Страхование.feature:39)\n"
+      },
+      "testCases" : [ {
+        "uid" : "8adc4e2ea0d11d43",
+        "name" : "Заявка на Страхование для путешественников",
+        "title" : "Заявка на Страхование для путешественников",
+        "time" : {
+          "start" : 1606255204855,
+          "stop" : 1606255220216,
+          "duration" : 15361
+        },
+        "severity" : "NORMAL",
+        "status" : "FAILED"
+      } ]
+    } ]
+  }, {
+    "title" : "Test defects",
+    "status" : "BROKEN",
+    "defects" : [ ]
+  } ]
+}

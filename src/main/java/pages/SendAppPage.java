@@ -11,6 +11,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import steps.BaseSteps;
 
 public class SendAppPage extends BasePage {
 
@@ -59,12 +60,11 @@ public class SendAppPage extends BasePage {
     public WebElement backButton;
 
 
-    public SendAppPage(WebDriver driver) {
-        PageFactory.initElements(driver, this);
-        this.driver = driver;
+    public SendAppPage() {
+        PageFactory.initElements(BaseSteps.getDriver(), this);
     }
 
-    public void fillField(String fieldName, String value){
+    public void fillField1(String fieldName, String value){
         switch (fieldName){
             case  "Застрахованные Фамилия":
                 fillField(insuredLastName, value);
@@ -149,13 +149,13 @@ public class SendAppPage extends BasePage {
 
     public void checkFieldErrorMessage(String errorMessage){
         String xpath = "//div[@class='alert-form alert-form-error']";
-        String actualValue = driver.findElement(By.xpath(xpath)).getText();
+        String actualValue = BaseSteps.getDriver().findElement(By.xpath(xpath)).getText();
         org.junit.Assert.assertTrue(String.format("Получено значение [%s]. Ожидалось [%s]", actualValue, errorMessage),
                 actualValue.contains(errorMessage));
     }
     public void waitRegisterButton(){
-        Wait<WebDriver> wait = new WebDriverWait(driver, 5, 1000);
-        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//BUTTON[text()='Оформить']"))));
+        Wait<WebDriver> wait = new WebDriverWait(BaseSteps.getDriver(), 5, 1000);
+        wait.until(ExpectedConditions.visibilityOf(BaseSteps.getDriver().findElement(By.xpath("//BUTTON[text()='Оформить']"))));
     }
     public void clickField(String fieldName) {
         switch (fieldName) {
